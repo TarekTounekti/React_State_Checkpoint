@@ -25,6 +25,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // Start the interval to update the elapsed time every second
     this.intervalId = setInterval(() => {
       const elapsedTime = this.getElapsedTime();
       this.setState({ elapsedTime });
@@ -32,6 +33,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    // Clear the interval when the component is unmounted to avoid memory leaks
     clearInterval(this.intervalId);
   }
 
@@ -46,6 +48,7 @@ class App extends Component {
   }
 
   formatTimeUnit(unit) {
+    // Helper function to format time units to have leading zeros
     return unit < 10 ? `0${unit}` : unit;
   }
 
@@ -58,6 +61,7 @@ class App extends Component {
         <div className="row">
           <div className="col-md-6 offset-md-3 mt-5">
             {show && (
+              // Render the card only if show state is true
               <div className="card mt-3">
                 <img className="card-img-top" src={imgSrc} alt={fullName} />
                 <div className="card-body">
